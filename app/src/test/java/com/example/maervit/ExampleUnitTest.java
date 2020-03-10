@@ -1,4 +1,4 @@
-package com.example.marvit;
+package com.example.maervit;
 
 import org.junit.Test;
 

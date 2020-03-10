@@ -1,4 +1,4 @@
-package com.example.marvit;
+package com.example.maervit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
