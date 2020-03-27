@@ -1,71 +1,63 @@
 package com.example.maervit;
 
 import android.content.Intent;
+import android.content.pm.ShortcutManager;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
-import me.dm7.barcodescanner.zxing.ZXingScannerView;
+import android.os.Handler;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
-
-    private ZXingScannerView scannerView;
-
+    // VARIABLES
+    Animation topAnimation;
+    ImageView image;
+    boolean shouldStart = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-
-    public  void scanCode (View v) {
-        scannerView = new ZXingScannerView(this);
-        scannerView.setResultHandler(new ZXingScannerResultHandler());
-
-        setContentView(scannerView);
-        scannerView.startCamera();
-
-    }
-
-    @Override
-    public void onPause(){
-        super.onPause();
-        this.finish();
-    }
 
 
-    class ZXingScannerResultHandler implements ZXingScannerView.ResultHandler{
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        @Override
-        public void handleResult(com.google.zxing.Result result) {
-            String resultCodeString = result.getText();
-            long resultCode = Long.parseLong(resultCodeString);
-            long liner = 884851041913L;
-            if (resultCode == liner){
-                Toast.makeText(HomeActivity.this, "prave si naskenoval liner", Toast.LENGTH_LONG).show();
-                openMainActivity2();
-            }else{
-                Toast.makeText(HomeActivity.this, "neurcene", Toast.LENGTH_SHORT).show();
-            }
+        setContentView(R.layout.splash_screen);
+        getSupportActionBar().hide();
+        LogoLauncher logoLauncher = new LogoLauncher();
+        logoLauncher.start();
 
+
+        Handler handler = new Handler();
+        handler.postDelayed(run,1410);
+
+        topAnimation = AnimationUtils.loadAnimation(this, R.anim.top_animation);
+
+        //image
+
+<<<<<<< Updated upstream
 
             setContentView(R.layout.activity_main);
             scannerView.stopCamera();
         }
+=======
+        image = findViewById(R.id.imageView2);
+        image.setAnimation(topAnimation);
+>>>>>>> Stashed changes
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+    private class LogoLauncher extends Thread{
+        public void run(){
+            try{
+                sleep(1410);
+            }catch(InterruptedException e){
+                e.printStackTrace();
+            }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
+<<<<<<< Updated upstream
         //SimplifiableIfStatement
         switch (item.getItemId()){
             case R.id.about:
@@ -84,4 +76,29 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent );
     }
+=======
+            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+            startActivity(intent);
+            HomeActivity.this.finish();
+        }
+    }
+
+
+    Runnable run = new Runnable() {
+        @Override
+        public void run() {
+            if(shouldStart = true) {
+                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                HomeActivity.this.startActivity(intent);
+                HomeActivity.this.finish();
+            }
+        }
+    };
+    @Override
+    protected void onPause() {
+        shouldStart = false;
+        super.onPause();
+        this.finish();
+    }
+>>>>>>> Stashed changes
 }

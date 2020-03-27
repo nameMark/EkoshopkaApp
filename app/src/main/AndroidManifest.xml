@@ -13,22 +13,43 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+<<<<<<< Updated upstream
 
 
 
+=======
+>>>>>>> Stashed changes
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:label="Ekoshopka" />
+
+        <activity
+            android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< Updated upstream
         <activity android:name=".HomeActivity"
             android:label="Ekoshopka"></activity>
         <activity android:name=".Main2Activity"
             android:label="Liner" ></activity>
 
+=======
+
+        <activity
+            android:name=".Onas"
+            android:label="O nás"
+            android:parentActivityName=".Onas"/>
+
+
+
+
+        <activity
+            android:name=".Main2Activity"
+            android:label="Liner" />
+>>>>>>> Stashed changes
     </application>
 
 </manifest>
