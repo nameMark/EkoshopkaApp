@@ -45,9 +45,17 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:src="@drawable/zem"/>
+
+                    <TextView
+                        android:id="@+id/stopa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="39,2 kg CO2 ↓"
+                        android:textStyle="italic"
+                        android:textSize="20sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -77,6 +85,7 @@
                 android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="otvorChladnicku"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 app:cardElevation="6dp"
@@ -92,8 +101,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:src="@drawable/fridge"/>
 
                     <TextView
@@ -140,8 +149,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:src="@drawable/calendar"/>
 
                     <TextView
